@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function NoteList({ notes }) {
   if (notes.length === 0)
@@ -26,3 +27,15 @@ export default function NoteList({ notes }) {
     </div>
   );
 }
+
+NoteList.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string,
+      priority: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ),
+};
